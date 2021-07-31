@@ -1,6 +1,7 @@
 """credit calculator"""
 
 
+# When the user enter 'm'
 def option_m(principal):
     print("Enter the monthly payment:")
     monthly = int(input())
@@ -9,25 +10,27 @@ def option_m(principal):
         case monthly if monthly == principal:
             print(f"It will take 1 month to repay the loan")
         case _:
-            months = -(-principal // monthly)
-            print(f"It will take {months} months to repay the loan")
+            periods = -(-principal // monthly)
+            print(f"It will take {periods} months to repay the loan")
     pass
 
 
+# When the user enter 'p'
 def option_p(principal):
-    print("Enter the number of months:")
-    months = int(input())
+    print("Enter the number of periods:")
+    periods = int(input())
 
-    monthly = -(-principal // months)
-    match months:
-        case months if months % 2 == 0:
+    monthly = -(-principal // periods)
+    match periods:
+        case periods if periods % 2 == 0:
             print(f"Your monthly payment = {monthly}")
         case _:
-            last = principal - (months - 1) * monthly
+            last = principal - (periods - 1) * monthly
             print(f"Your monthly payment = {monthly} and the last payment = {last}")
     pass
 
 
+# Entry point function
 def calculator():
     print("Enter the loan principal:")
     loan_principal = int(input())
