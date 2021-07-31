@@ -117,5 +117,31 @@ files:
         LoanCalcTest('creditcalc.creditcalc').run_tests()
   learner_created: false
 feedback_link: https://hyperskill.org/projects/90/stages/502/implement#comment
-status: Unchecked
+status: Failed
+feedback:
+  message: |-
+    Wrong answer in test #4
+
+    Correct result: 2 years, but you output "What do you want to calculate?
+    type "n" for number of monthly payments,
+    type "a" for annuity monthly payment amount,
+    type "p" for loan principal:
+    Enter the loan principal:Enter the monthly payment:Enter the loan interest:It will take 0 years and 0 months to repay this loan!
+    "
+
+    Please find below the output of your program during this failed test.
+    Note that the '>' character indicates the beginning of the input line.
+
+    ---
+
+    What do you want to calculate?
+    type "n" for number of monthly payments,
+    type "a" for annuity monthly payment amount,
+    type "p" for loan principal:
+    > n
+    Enter the loan principal:> 500000
+    Enter the monthly payment:> 23000
+    Enter the loan interest:> 7.8
+    It will take 0 years and 0 months to repay this loan!
+  time: Sat, 31 Jul 2021 07:37:28 UTC
 record: 3
