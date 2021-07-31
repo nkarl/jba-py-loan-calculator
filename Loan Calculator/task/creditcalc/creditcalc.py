@@ -1,49 +1,64 @@
 """credit calculator"""
+import math
+
+
+def nominal(interest):
+    return (interest / 100) / 12
+
+
+def option_n():
+    principal = int(input("Enter the loan principal:"))
+    a_monthly = int(input("Enter the monthly payment:"))
+    interest = float(input("Enter the loan interest:"))
+
+    def get_periods():
+        i = nominal(interest)
+        tmp = a_monthly / (a_monthly - i * principal)
+        return math.ceil(math.log(tmp, i))
+    periods = get_periods()
+    y = periods // 12
+    m = periods - (y * 12)
+    print(f"It will take {y} years and {m} months to repay this loan!")
 
 
 # When the user enter 'm'
-def option_m(principal):
-    print("Enter the monthly payment:")
-    monthly = int(input())
+def option_a():
+    principal = int(input("Enter the loan principal:"))
+    periods = int(input("Enter the monthly payment:"))
+    interest = float(input("Enter the loan interest:"))
 
-    match monthly:
-        case monthly if monthly == principal:
-            print(f"It will take 1 month to repay the loan")
-        case _:
-            periods = -(-principal // monthly)
-            print(f"It will take {periods} months to repay the loan")
-    pass
+    def get_monthly():
+        i = nominal(interest)
+        return -(-i * (1+i) ** periods) / ((1+i) ** periods - 1)
+
+    a_monthly = get_monthly()
+    print(f"Your monthly payment = {a_monthly}!")
 
 
 # When the user enter 'p'
-def option_p(principal):
-    print("Enter the number of periods:")
-    periods = int(input())
+def option_p():
+    a_monthly = float(input("Enter the loan principal:"))
+    periods = int(input("Enter the monthly payment:"))
+    interest = int(input("Enter the loan interest:"))
 
-    monthly = -(-principal // periods)
-    match periods:
-        case periods if periods % 2 == 0:
-            print(f"Your monthly payment = {monthly}")
-        case _:
-            last = principal - (periods - 1) * monthly
-            print(f"Your monthly payment = {monthly} and the last payment = {last}")
     pass
 
 
 # Entry point function
 def calculator():
-    print("Enter the loan principal:")
-    loan_principal = int(input())
     print("What do you want to calculate?")
-    print("type \"m\" - for number of monthly payments,")
-    print("type \"p\" - for the monthly payment:")
+    print("type \"n\" for number of monthly payments,")
+    print("type \"a\" for annuity monthly payment amount,")
+    print("type \"p\" for loan principal:")
     option = input()
 
     match option:
-        case "m":
-            option_m(loan_principal)
+        case "n":
+            option_n()
+        case "a":
+            option_a()
         case "p":
-            option_p(loan_principal)
+            option_p()
     pass
 
 
