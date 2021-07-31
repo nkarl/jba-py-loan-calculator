@@ -29,9 +29,9 @@ def option_a():
 
     def get_monthly():
         i = nominal(interest)
-        return -(-i * (1+i) ** periods) / ((1+i) ** periods - 1)
+        return (i * (1+i) ** periods) / ((1+i) ** periods - 1)
 
-    a_monthly = get_monthly()
+    a_monthly = int(math.ceil(principal * get_monthly()))
     print(f"Your monthly payment = {a_monthly}!")
 
 
