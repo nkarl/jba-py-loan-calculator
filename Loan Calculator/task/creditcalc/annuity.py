@@ -1,8 +1,11 @@
-"""calculator class for annuity payments."""
+"""calculator class for Annuity Loan Payments"""
 import math
 
 
 class Annuity:
+    """
+    This class is used to compute the values in Annuity Loan Payments.
+    """
     @staticmethod
     def nominal(interest):
         """Compute the nominal (interest) rate"""

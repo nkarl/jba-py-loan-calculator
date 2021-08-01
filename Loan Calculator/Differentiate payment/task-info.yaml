@@ -259,6 +259,9 @@ files:
 - name: creditcalc/annuity.py
   visible: true
   learner_created: true
+- name: creditcalc/differentiate.py
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/90/stages/503/implement#comment
 status: Failed
 feedback:
