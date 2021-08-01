@@ -17,12 +17,24 @@ def main():
                         help="(Annuity only) this is the monthly payment amount.")
     parser.add_argument("--principal", type=int,
                         help="this is the principal loan total.")
-    parser.add_argument("--period", type=int,
+    parser.add_argument("--periods", type=int,
                         help="this is the total number of payments.")
     parser.add_argument("--interest", type=float,
                         help="this is the agreed interest rate.")
-    parser.parse_args()
-    Annuity.calculator()
+
+    cli = parser.parse_args()
+
+    args = {
+        "type": cli.type,
+        "payment": cli.payment,
+        "principal": cli.principal,
+        "periods": cli.periods,
+        "interest": cli.interest
+    }
+    if args['type'] == 'annuity':
+        Annuity.calculator(args['principal'], args['payment'], args['periods'], args['interest'])
+    elif args['type'] == 'diff':
+        Diff.calculator(args['principal'], args['periods'], args['interest'])
 
 
 if __name__ == "__main__":
