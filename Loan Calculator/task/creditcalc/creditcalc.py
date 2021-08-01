@@ -38,7 +38,7 @@ def main():
     # count and check if argument is valid (non-negative)
     nargs = len(args)
     for a in args:
-        if args[a] < 0:
+        if args[a] and args[a] < 0:
             print("Incorrect parameters")  # negative value
             return
         nargs -= 1 if args[a] is None else 0
