@@ -1,15 +1,16 @@
 """credit calculator"""
-import math
 import argparse
 from annuity import Annuity
 from differentiate import Diff
 
 
 def main():
+    # parser object
     parser = argparse.ArgumentParser(
         description="This is the Differentiate Loan Payment Calculator. \
                     It accepts optional CLI arguments for computation.")
 
+    # parser arguments
     parser.add_argument("--type", default="annuity", choices=["annuity", "diff"],
                         help="this is the type of payment options. \
                               Supply either 'annuity' for Annuity or 'diff' for Differentiate.")
@@ -22,18 +23,33 @@ def main():
     parser.add_argument("--interest", type=float,
                         help="this is the agreed interest rate.")
 
+    # parse arguments
     cli = parser.parse_args()
 
+    # compile arguments into collection
+    compute_type = cli.type
     args = {
-        "type": cli.type,
         "payment": cli.payment,
         "principal": cli.principal,
         "periods": cli.periods,
         "interest": cli.interest
     }
-    if args['type'] == 'annuity':
+
+    # count and check if argument is valid (non-negative)
+    nargs = len(args)
+    for a in args:
+        if args[a] < 0:
+            print("Incorrect parameters")  # negative value
+            return
+        nargs -= 1 if args[a] is None else 0
+
+    # compute if passed validity check
+    if compute_type == 'annuity':
+        if nargs < 3:
+            print("Incorrect parameters")
+            return
         Annuity.calculator(args['principal'], args['payment'], args['periods'], args['interest'])
-    elif args['type'] == 'diff':
+    elif compute_type == 'diff':
         Diff.calculator(args['principal'], args['periods'], args['interest'])
 
 
