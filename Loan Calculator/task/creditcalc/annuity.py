@@ -15,7 +15,6 @@ class Annuity:
     @staticmethod
     def option_n(principal=None, monthly=None, interest=None):
         """When the user enters 'n'; computes the numbers of months required."""
-
         def get_periods():
             i = Annuity.nominal(interest)
             tmp = monthly / (monthly - i * principal)
@@ -31,8 +30,9 @@ class Annuity:
             principal = int(input("Enter the loan principal:"))
             monthly = int(input("Enter the monthly payment:"))
             interest = float(input("Enter the loan interest:"))
-            y, m = get_year_month()
-            print(f"It will take {y} years and {m} months to repay this loan!")
+        y, m = get_year_month()
+        print(f"It will take {y} years and {m} months to repay this loan!")
+        print(f"Overpayment = {monthly * get_periods() - principal}")
 
     @staticmethod
     def option_a(principal=None, periods=None, interest=None):
@@ -52,6 +52,7 @@ class Annuity:
     @staticmethod
     def option_p(monthly=None, periods=None, interest=None):
         """When the user enters 'p'; computes the total (principal) loan."""
+
         def get_principal():
             i = Annuity.nominal(interest)
             temp = (i * (1 + i) ** periods) / ((1 + i) ** periods - 1)
@@ -68,9 +69,6 @@ class Annuity:
         principal = get_principal()
         print(f"Your loan principal = {principal}")
         print(f"Overpayment = {monthly * periods - principal}")
-
-
-
 
     @staticmethod
     def calculator(principal=None, monthly=None, periods=None, interest=None):
