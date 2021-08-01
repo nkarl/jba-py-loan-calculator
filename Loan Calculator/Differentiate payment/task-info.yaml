@@ -256,6 +256,9 @@ files:
     if __name__ == '__main__':
         LoanCalcTest('creditcalc.creditcalc').run_tests()
   learner_created: false
+- name: creditcalc/annuity.py
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/90/stages/503/implement#comment
 status: Failed
 feedback:
@@ -276,5 +279,5 @@ feedback:
     type "a" for annuity monthly payment amount,
     type "p" for loan principal:
     >
-  time: Sat, 31 Jul 2021 17:36:44 UTC
+  time: Sun, 01 Aug 2021 01:33:08 UTC
 record: -1
