@@ -13,7 +13,8 @@ def main():
     # add optional CLI arguments
     parser.add_argument("--type", default="annuity", choices=["annuity", "diff"],
                         help="this is the type of payment options. \
-                              Supply either 'annuity' for Annuity or 'diff' for Differentiate.")
+                              Supply either 'annuity' for Annuity or \
+                                'diff' for Differentiate.")
     parser.add_argument("--payment", type=int,
                         help="(Annuity only) this is the monthly payment amount.")
     parser.add_argument("--principal", type=int,
@@ -41,7 +42,7 @@ def main():
         if args[a] and args[a] < 0:
             print("Incorrect parameters")  # negative value
             return
-        nargs -= 1 if args[a] is None else 0
+        nargs -= 1 if args[a] is None else 0  # count the number of arguments
 
     # compute if passed validity check
     if compute_type == 'annuity':

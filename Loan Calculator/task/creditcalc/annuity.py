@@ -14,7 +14,8 @@ class Annuity:
 
     @staticmethod
     def option_n(principal=None, monthly=None, interest=None):
-        """When the user enters 'n'; computes the numbers of months required."""
+        """When the user enters 'n'; \
+            computes the numbers of months required."""
         def get_periods():
             i = Annuity.nominal(interest)
             tmp = monthly / (monthly - i * principal)
